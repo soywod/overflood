@@ -1,0 +1,33 @@
+{
+  "name": "stack-overflood-web",
+  "version": "0.0.1",
+  "private": true,
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@types/jest": "24.0.11",
+    "@types/material-ui": "^0.21.6",
+    "@types/node": "11.13.6",
+    "@types/react": "16.8.14",
+    "@types/react-dom": "16.8.4",
+    "prettier": "^1.17.0",
+    "react-scripts": "2.1.8",
+    "typescript": "3.4.4"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/styles": "^3.0.0-alpha.10",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}
