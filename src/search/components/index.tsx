@@ -1,4 +1,4 @@
-import React, {FormEvent, ChangeEvent, useRef, useState} from 'react'
+import React, {FormEvent, useRef} from 'react'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Link from '@material-ui/core/Link'
@@ -6,6 +6,9 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 
+import storage from '../../storage/utils'
+import {notify} from '../../notification/utils'
+import {useSocket} from '../../socket/hooks'
 import {useStyles} from './styles'
 
 type Props = {
@@ -16,20 +19,23 @@ type Props = {
 
 export default function({loading, start, stop}: Props) {
   const classes = useStyles()
-  const [tags, setLocalTags] = useState<string | null>(null)
-  const searchRef = useRef<HTMLInputElement | null>(null)
-
-  function setTags(event: ChangeEvent<HTMLInputElement>) {
-    setLocalTags(event.currentTarget.value || null)
-  }
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const [subscribe, unsubscribe] = useSocket()
 
   function toggleSearch(event: FormEvent) {
     event.preventDefault()
 
     if (loading) {
-      stop()
-    } else {
+      unsubscribe()
+      return stop()
+    }
+
+    if (inputRef.current) {
       start()
+      const tags = inputRef.current.value.trim()
+      tags.split(' ').forEach(tag => subscribe(tag.trim()))
+      storage.persistTags(tags)
+      notify(`Subscription ON, waiting for new questions...`)
     }
   }
 
@@ -57,15 +63,14 @@ export default function({loading, start, stop}: Props) {
 
             <TextField
               className={classes.input}
-              inputProps={{ref: searchRef}}
+              inputProps={{ref: inputRef}}
               variant="outlined"
               margin="dense"
               label="Tags (space separated)"
               fullWidth
               autoFocus
-              value={tags || ''}
-              onChange={setTags}
               disabled={loading}
+              defaultValue={storage.loadTags()}
             />
 
             <div className={classes.button}>
@@ -73,7 +78,6 @@ export default function({loading, start, stop}: Props) {
                 type="submit"
                 variant="contained"
                 color={loading ? 'default' : 'secondary'}
-                disabled={!tags}
               >
                 {loading ? 'Cancel' : 'Subscribe'}
               </Button>

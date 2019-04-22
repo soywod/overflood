@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   container: {
     marginTop: theme.spacing.unit * 12,
     [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing.unit * 7,
+      marginTop: theme.spacing.unit * 8,
     },
   },
   paper: {
