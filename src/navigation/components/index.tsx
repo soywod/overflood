@@ -21,7 +21,12 @@ export default function({loading}: Props) {
           Stack Overflood
         </Typography>
 
-        <Button color="inherit" href="#">
+        <Button
+          color="inherit"
+          href="https://github.com/stack-overflood/README"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </Button>
       </Toolbar>
