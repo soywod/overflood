@@ -35,7 +35,7 @@ export default function({loading, start, stop}: Props) {
       const tags = inputRef.current.value.trim()
       tags.split(' ').forEach(tag => subscribe(tag.trim()))
       storage.persistTags(tags)
-      notify(`Subscription ON, waiting for new questions...`)
+      notify('Subscription ON, waiting for new questions...')
     }
   }
 
