@@ -1,6 +1,7 @@
 import React, {FormEvent, ChangeEvent, useRef, useState} from 'react'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
@@ -34,17 +35,24 @@ export default function({loading, start, stop}: Props) {
 
   return (
     <Grid className={classes.container} container justify="center">
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={10} md={6} lg={4}>
         <Paper className={classes.paper}>
           <form onSubmit={toggleSearch}>
-            <Typography component="h1" variant="h3">
+            <Typography className={classes.title} component="h1" variant="h3">
               Stack Overflood
             </Typography>
 
-            <Typography gutterBottom variant="body1">
-              Stack Overflood is a tool that helps you to increase your Stack
-              Overflow's reputation. You subscribe to your favorite tags, and
-              you get notified when a new question is posted.
+            <Typography className={classes.text} variant="body1">
+              Stack Overflood is a tool that helps you to increase your{' '}
+              <Link
+                href="https://stackoverflow.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Stack Overflow
+              </Link>
+              's reputation. You subscribe to your favorite tags, and you get
+              notified when a new question is posted.
             </Typography>
 
             <TextField
