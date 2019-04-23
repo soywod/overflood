@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   title: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing.unit * 1,
+    marginBottom: theme.spacing.unit * 1.5,
     [theme.breakpoints.down('xs')]: {
       fontSize: '2rem',
       marginBottom: theme.spacing.unit * 2,
@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     width: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit / 2,
     marginRight: theme.spacing.unit,
     [theme.breakpoints.down('xs')]: {
       display: 'none',
