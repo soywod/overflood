@@ -4,7 +4,7 @@ import ThemeProvider from '@material-ui/styles/ThemeProvider'
 
 import theme from '../../theme'
 import AppBar from '../../navigation/components'
-import Search from '../../search/components'
+import Providers from '../../providers'
 import Permission from '../../permission/components'
 
 export default function() {
@@ -22,7 +22,7 @@ export default function() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar loading={loading} />
-      <Search loading={loading} start={start} stop={stop} />
+      <Providers />
       <Permission />
     </ThemeProvider>
   )

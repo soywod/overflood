@@ -1,7 +1,7 @@
 const BASE_URL = 'https://stackoverflow.com'
 
 export function notify(body: string, link?: string | null) {
-  const notification = new Notification('Stack Overflood Web', {body})
+  const notification = new Notification('Overflood', {body})
 
   if (link) {
     notification.onclick = () => {
