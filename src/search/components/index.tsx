@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import storage from '../../storage/utils'
 import {notify} from '../../notification/utils'
 import {useSocket} from '../../socket/hooks'
+import logo from './logo.png'
+
 import {useStyles} from './styles'
 
 type Props = {
@@ -41,10 +43,11 @@ export default function({loading, start, stop}: Props) {
 
   return (
     <Grid className={classes.container} container justify="center">
-      <Grid item xs={12} sm={10} md={6} lg={4}>
+      <Grid item xs={12} sm={11} md={7} lg={5} xl={4}>
         <Paper className={classes.paper}>
           <form onSubmit={toggleSearch}>
             <Typography className={classes.title} component="h1" variant="h3">
+              <img className={classes.logo} src={logo} />
               Stack Overflood
             </Typography>
 

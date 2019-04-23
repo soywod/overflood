@@ -16,10 +16,20 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   title: {
-    marginBottom: theme.spacing.unit * 3,
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: theme.spacing.unit * 1,
     [theme.breakpoints.down('xs')]: {
       fontSize: '2rem',
       marginBottom: theme.spacing.unit * 2,
+    },
+  },
+  logo: {
+    width: theme.spacing.unit * 8,
+    marginBottom: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit,
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
     },
   },
   text: {
