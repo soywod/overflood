@@ -1,27 +1,32 @@
-import React, {Fragment, useRef} from 'react'
+import React, {Fragment} from 'react'
 import TextField from '@material-ui/core/TextField'
-
-import {ProviderProps} from '..'
 
 import {useStyles} from './styles'
 
-export default function(props: ProviderProps) {
+export default function() {
   const classes = useStyles()
-  const inputRef = useRef<HTMLInputElement | null>(null)
 
   return (
     <Fragment>
       <TextField
         className={classes.input}
-        multiline
-        name="links"
-        inputProps={{ref: inputRef}}
+        name="category"
         variant="outlined"
         margin="dense"
-        label="Links (space separated)"
+        label="Category"
         fullWidth
-        autoFocus
         required
+        defaultValue="developpement"
+      />
+      <TextField
+        className={classes.input}
+        name="subcategory"
+        variant="outlined"
+        margin="dense"
+        label="Subcategory"
+        fullWidth
+        required
+        defaultValue="developpeur-front-end"
       />
     </Fragment>
   )

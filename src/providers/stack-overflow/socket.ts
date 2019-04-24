@@ -12,6 +12,8 @@ const state: State = {
   questionIds: [],
 }
 
+const SITE_URL = 'https://stackoverflow.com'
+
 export function subscribe(tag: string) {
   state.subscriptions.push(tag)
 
@@ -65,8 +67,10 @@ export function subscribe(tag: string) {
           $html.innerHTML = data.body
 
           const link = $html.getElementsByClassName('question-hyperlink')[0]
-          notify(`[${tag}] ${link.innerHTML}`, link.getAttribute('href'))
-          break
+          return notify(
+            `[${tag}] ${link.innerHTML}`,
+            `${SITE_URL}/${link.getAttribute('href')}`,
+          )
 
         default:
           return

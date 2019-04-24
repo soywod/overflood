@@ -3,15 +3,23 @@ import makeStyles from '@material-ui/styles/makeStyles'
 
 export const useStyles = makeStyles((theme: Theme) => ({
   container: {
-    marginTop: theme.spacing.unit * 8,
-    padding: theme.spacing.unit * 2,
+    margin: 0,
+    marginTop: theme.spacing.unit * 2,
+    padding: theme.spacing.unit,
+    width: '100%',
     [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing.unit * 7,
+      marginTop: theme.spacing.unit,
+      paddingTop: 0,
     },
   },
   paper: {
     padding: theme.spacing.unit * 2,
     height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flex: 1,
   },
   title: {
     display: 'flex',
@@ -22,12 +30,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   form: {
-    marginTop: theme.spacing.unit * 4,
+    marginTop: theme.spacing.unit * 2,
   },
   text: {
     marginBottom: theme.spacing.unit * 2,
   },
-  button: {
+  switch: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
     justifyContent: 'flex-end',
