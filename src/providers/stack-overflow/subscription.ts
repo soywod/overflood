@@ -1,7 +1,7 @@
 import getOr from 'lodash/fp/getOr'
 
 import {notify} from '../../notification'
-import {SubscribeParams} from '..'
+import {ProviderFormData} from '..'
 
 type State = {
   socket: WebSocket | null
@@ -17,7 +17,7 @@ const state: State = {
 
 const SITE_URL = 'https://stackoverflow.com'
 
-export function subscribe(data: SubscribeParams) {
+export function subscribe(data: ProviderFormData) {
   const tags: string[] = getOr('', 'tags', data).split(' ')
   tags.forEach(tag => subscribeTo(tag.trim()))
 }

@@ -1,22 +1,15 @@
-import React, {Fragment} from 'react'
-import TextField from '@material-ui/core/TextField'
+import React from 'react'
 
-import {useStyles} from './styles'
+import {ProviderProps} from '..'
 
-export default function() {
-  const classes = useStyles()
+export default function(props: ProviderProps) {
+  const {TextField} = props.components
 
   return (
-    <Fragment>
-      <TextField
-        className={classes.input}
-        name="tags"
-        variant="outlined"
-        margin="dense"
-        label="Tags (space separated)"
-        fullWidth
-        required
-      />
-    </Fragment>
+    <TextField
+      name="tags"
+      label="Tags"
+      helperText="Tags must be separated by spaces."
+    />
   )
 }

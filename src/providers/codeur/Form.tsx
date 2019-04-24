@@ -1,32 +1,31 @@
 import React, {Fragment} from 'react'
-import TextField from '@material-ui/core/TextField'
 
-import {useStyles} from './styles'
+import {ProviderProps} from '..'
 
-export default function() {
-  const classes = useStyles()
+export default function(props: ProviderProps) {
+  const {TextField} = props.components
 
   return (
     <Fragment>
       <TextField
-        className={classes.input}
         name="category"
-        variant="outlined"
-        margin="dense"
         label="Category"
-        fullWidth
-        required
         defaultValue="developpement"
+        helperText={
+          <Fragment>
+            Value appearing after <code>/projects/c/</code>
+          </Fragment>
+        }
       />
       <TextField
-        className={classes.input}
         name="subcategory"
-        variant="outlined"
-        margin="dense"
         label="Subcategory"
-        fullWidth
-        required
         defaultValue="developpeur-front-end"
+        helperText={
+          <Fragment>
+            Value appearing after <code>/projects/c/&lt;category&gt;/sc/</code>
+          </Fragment>
+        }
       />
     </Fragment>
   )

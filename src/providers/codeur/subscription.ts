@@ -2,7 +2,7 @@ import axios from 'axios'
 import _ from 'lodash/fp'
 
 import {notify} from '../../notification'
-import {SubscribeParams} from '..'
+import {ProviderFormData} from '..'
 
 type Project = {
   id: number
@@ -23,7 +23,7 @@ const state: State = {
 }
 
 const PROXY_URL = 'https://cors-anywhere.herokuapp.com'
-const SITE_URL = `https://www.codeur.com`
+const SITE_URL = 'https://www.codeur.com'
 
 function getId($project: Element) {
   const matchId = $project.id.match(/^project-(\d+)$/)
@@ -72,7 +72,7 @@ async function fetchProjects() {
   state.lastId = _.first(newProjects)!.id
 }
 
-export async function subscribe({category, subcategory}: SubscribeParams) {
+export async function subscribe({category, subcategory}: ProviderFormData) {
   state.url = `${PROXY_URL}/${SITE_URL}/projects/c/${category}/sc/${subcategory}`
 
   const res = await axios.get(state.url)

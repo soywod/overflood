@@ -32,6 +32,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
   form: {
     marginTop: theme.spacing.unit * 2,
   },
+  input: {
+    margin: 0,
+    marginTop: theme.spacing.unit * 2,
+  },
   text: {
     marginBottom: theme.spacing.unit * 2,
   },

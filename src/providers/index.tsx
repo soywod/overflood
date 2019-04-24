@@ -1,4 +1,4 @@
-import React, {ComponentType, FormEvent} from 'react'
+import React, {ComponentType, FunctionComponent, FormEvent} from 'react'
 import {useEffect, useRef, useState} from 'react'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -16,17 +16,25 @@ import {notify} from '../notification'
 import useAsyncContext from '../async/context'
 import stackOverflow from './stack-overflow'
 import codeur from './codeur'
+import Link from '../core/Link'
+import TextField, {TextFieldProps} from '../core/TextField'
 
 import {useStyles} from './styles'
 
-export type SubscribeParams = {[key: string]: string}
+export type ProviderFormData = {[key: string]: string}
 
-export type ProviderProps = {}
+export type ProviderProps = {
+  components: {
+    TextField: FunctionComponent<TextFieldProps>
+  }
+}
+
 export type Provider = {
   name: string
   description: string
+  link?: string
   form: ComponentType<ProviderProps>
-  subscribe: (data: SubscribeParams) => void
+  subscribe: (data: ProviderFormData) => void
   unsubscribe: () => void
 }
 
@@ -81,11 +89,15 @@ export default function() {
   return (
     <Grid className={classes.container} container spacing={16}>
       {providers.map(provider => (
-        <Grid key={provider.name} item xs={12} sm={6} md={4} lg={3}>
+        <Grid key={provider.name} item xs={12} sm={6} md={4}>
           <Paper className={classes.paper}>
             <div className={classes.content}>
               <Typography className={classes.title} component="h2" variant="h4">
-                {provider.name}
+                {provider.link ? (
+                  <Link to={provider.link}>{provider.name}</Link>
+                ) : (
+                  provider.name
+                )}
               </Typography>
 
               <Typography className={classes.text} variant="body1">
@@ -99,7 +111,7 @@ export default function() {
                   type="submit"
                 />
 
-                <provider.form />
+                <provider.form components={{TextField}} />
               </form>
             </div>
 
